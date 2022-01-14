@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
-import { Input } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import {usePopup, DialogType} from "react-custom-popup";
 export default function Home() {
@@ -46,6 +45,9 @@ export default function Home() {
             "Content-Type":"multipart/form-data"
           }})
           const data=await res
+          values.password=""
+          values.email=""
+          values.files=""
           if(data.data){
             showAlert({
               title: "Success",
@@ -76,7 +78,7 @@ export default function Home() {
         <TextField  type="email" label="Email" name="email"  variant="outlined" value={values.email} className="text" onBlur={handleBlur} onChange={handleChange} />
         {errors.email && touched.email && errors.email}
         
-        <TextField  type="password" label="password" name="password"  variant="outlined"  className="text" onBlur={handleBlur} onChange={handleChange} />
+        <TextField  type="password" label="password" name="password"  variant="outlined"  value={values.password} className="text" onBlur={handleBlur} onChange={handleChange} />
         {errors.password && touched.password && errors.password}
         
        
