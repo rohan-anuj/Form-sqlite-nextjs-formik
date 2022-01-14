@@ -26,6 +26,7 @@ const apiRoute = nextConnect({
 
 
 apiRoute.post(upload.single('file'),async(req, res) => {
+  console.log(req.file)
 
   const db=await open({filename:"userdatabase.db",driver:sqlite3.Database})
   const inserted=await db.run("insert into users (email,password,file) values (?,?,?)",req.body.email,req.body.password,req.file.path)
