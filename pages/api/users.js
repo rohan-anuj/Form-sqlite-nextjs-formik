@@ -7,7 +7,7 @@ import sqlite3 from 'sqlite3';
 //setting Storage destination & filename
 const upload = multer({
   storage: multer.diskStorage({
-    destination: './public/uploads',
+    destination: './tmp/uploads',
     filename: (req, file, cb) => cb(null, file.originalname),
   }),
 });
